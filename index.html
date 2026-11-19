@@ -556,6 +556,47 @@ ol.seq li::before{position:absolute;left:14px;top:50%;transform:translateY(-50%)
 .qrc.tool img{width:170px;height:170px}
 .qrc.tool h3{font-size:27px}.qrc.tool p{font-size:19px}
 .qrc.tool em{display:inline-block;font-style:normal;font-family:var(--fh);font-size:19px;background:var(--cc);color:#fff;border-radius:999px;padding:5px 18px}
+.vbox{position:relative;flex:1;min-height:0;border-radius:20px;overflow:hidden;background:#111}
+.vbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:0;border-radius:999px;background:var(--cc);color:#fff;font-family:var(--fh);font-size:30px;padding:16px 36px;box-shadow:0 8px 0 rgba(0,0,0,.25)}
+.vplay:hover{filter:brightness(1.08)}
+.vcap{position:absolute;left:14px;bottom:12px;right:14px;background:rgba(0,0,0,.6);color:#fff;border-radius:10px;padding:6px 12px;font-size:16px}
+body.mob .vbox{aspect-ratio:16/9;flex:none}
+
+/* ---- print mode (?print) ---- */
+@page{size:A4;margin:0}
+body.print{overflow:visible;height:auto;background:#fff}
+body.print #world,body.print #ui,body.print #zoom,body.print #form{display:none!important}
+#printroot *{box-sizing:border-box}
+#printroot .ppage{width:794px;height:1122px;padding:30px 22px 18px;display:flex;flex-direction:column;justify-content:space-between;break-after:page;page-break-after:always;overflow:hidden;background:#fff}
+#printroot .pslot{position:relative;width:750px;height:528px}
+#printroot .pslot .slide{position:absolute;left:0;top:0;width:1600px;height:900px;zoom:.46875;display:block}
+#printroot .pslot .card,#printroot .pslot .slide.wide .card{left:0;top:0;width:1600px;height:900px;animation:none;box-shadow:none;border:4px solid var(--tint2);border-radius:28px}
+#printroot .pnum{position:absolute;left:4px;right:4px;bottom:10px;border-top:1px dashed #c9c3b6;padding-top:6px;font-size:11px;color:#8a8376;font-family:var(--fb)}
+#printroot .vplay{display:none}
+#printroot .gq .opts button:not(.right){opacity:.55}
+#printroot .pcover{justify-content:center;padding:60px 64px}
+.pc-in{height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:20px;border:6px solid #3d6fe0;border-radius:36px;padding:56px 48px;background:linear-gradient(180deg,#eaf5ff,#fffdf8 60%)}
+.pc-kick{font-family:var(--fh);font-size:20px;color:var(--ink2)}
+.pcover h1{margin:0;font-family:var(--fh);font-weight:400;font-size:66px;line-height:1.1;color:var(--ink)}
+.pcover h2{margin:-6px 0 0;font-family:var(--fh);font-weight:400;font-size:30px;color:#3d6fe0}
+.pc-qr{display:flex;justify-content:center}
+.pc-big{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;border-radius:28px;padding:24px 34px;box-shadow:0 6px 0 rgba(61,111,224,.18);text-align:center}
+.pc-big img{width:300px;height:300px;image-rendering:pixelated}
+.pc-big b{font-family:var(--fh);font-weight:400;font-size:28px}
+.pc-big span{font-family:var(--fn);font-size:17px;color:#3d6fe0}
+.pc-big small{font-size:14px;color:var(--ink2)}
+.pc-row{display:flex;gap:18px;align-items:center;justify-content:space-between}
+.pc-who{font-size:17px;line-height:1.7}.pc-who b{font-family:var(--fh);font-weight:400;font-size:24px}
+.pc-fb{display:flex;align-items:center;gap:10px;font-family:var(--fh);font-size:18px}.pc-fb img{width:100px;height:100px;image-rendering:pixelated}.pc-fb small{font-family:var(--fb);font-size:13px;color:var(--ink2)}
+.pc-toc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc-toc li{display:flex;align-items:center;gap:10px;background:color-mix(in srgb,var(--cc) 12%,#fff);border-radius:14px;padding:10px 14px;font-family:var(--fh);font-size:21px}
+.pc-toc li b{width:34px;height:34px;border-radius:50%;background:var(--cc);color:#fff;display:grid;place-items:center;font-family:var(--fn)}
+html:has(body.print){width:794px;overflow:hidden}
+body.print{width:794px;margin:0}
+#printroot{width:794px;overflow:hidden}
+#printroot .pslot{overflow:hidden}
 
 </style></head><body>
 
@@ -614,9 +655,13 @@ function GQ(q,opts,a,why){return `<div class="gq" data-a="${a}"><p>${q}</p><div 
 function QZ(ch,tag,title,qs,o={}){S(ch,tag,title,`<div class="qz"></div>`,Object.assign({init:c=>initQuiz(c,ch,qs,o),quiz:!o.pre,pre:!!o.pre,nq:qs.length},o.extra||{}));}
 function S(ch,tag,title,body,o={}){SL.push(Object.assign({ch,tag,title,body},o));}
 function PIC(n,alt){return `<img class="pic" src="img/${n}.jpg" alt="${alt}" loading="lazy">`;}
+/* YouTube: poster first, iframe only after a click; QR + link work where embeds are blocked */
+function VID(id,poster,cap){return `<div class="vbox" data-yt="${id}" data-poster="${poster}" data-cap="${cap}"></div>`;}
+function vPoster(b){b.innerHTML=`<img src="img/${b.dataset.poster}.jpg" alt="${b.dataset.cap}"><button class="vplay" aria-label="播放影片">▶ 播放影片</button><span class="vcap">${b.dataset.cap}</span>`;b.querySelector('.vplay').onclick=()=>{b.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="${b.dataset.cap}"></iframe>`;};}
+function initVid(c){c.querySelectorAll('.vbox').forEach(vPoster);c._stop=()=>c.querySelectorAll('.vbox').forEach(b=>{if(b.querySelector('iframe'))vPoster(b);});}
 function qrImg(url,cell=6){try{const q=qrcode(0,'M');q.addData(url);q.make();return '<img alt="QR code" src="'+q.createDataURL(cell,2)+'">';}catch(e){return '';}}
 /* mid-unit check: a few one-tap questions */
-function CHK(ch,title,qs){S(ch,CH[ch].n+' · 小檢核',title,`<p class="lead">上完一段，先停下來確認：點選你的答案，會立刻看到對錯和理由。</p><div class="chk">${qs.map(q=>GQ(q[0],q[1],q[2],q[3])).join('')}</div>`,{wide:true});}
+function CHK(ch,title,qs){S(ch,CH[ch].n+' · 小檢核',title,`<p class="lead">上完一段，先停下來確認：點選你的答案，會立刻看到對錯和理由。</p><div class="chk">${qs.map(q=>GQ(q[0],q[1],q[2],q[3])).join('')}</div>`,{wide:true,chk:true});}
 const ROLES=`<li><b>愛迪樂有限公司</b> 執行長｜愛迪樂居家職能治療所 所長</li>
    <li>社團法人台灣生活復能健康促進協會 副理事長</li>
    <li>中華高齡專業照護訓練協會 理事</li>
@@ -654,7 +699,7 @@ S(0,'開場 · 今天怎麼上','每一站都是：先猜 → 學 → 檢核',`
   <div class="har">→</div>
   <div class="hstep"><span class="hn">2</span><h3>上內容</h3><p>法規、危害、技術、流程。中途會有「小檢核」，馬上確認聽懂了沒。</p></div>
   <div class="har">→</div>
-  <div class="hstep solid"><span class="hn">3</span><h3>闖關測驗</h3><p>每站最後 5–7 題，答對 6 成蓋一個印章。四個印章集滿就完成今天的學習。</p></div>
+  <div class="hstep solid"><span class="hn">3</span><h3>闖關測驗</h3><p>每站最後 6–8 題，答對 6 成蓋一個印章。四個印章集滿就完成今天的學習。</p></div>
  </div>
  <div class="note">右上角的「學習護照」會記錄你的分數。每一站結束按 <kbd>→</kbd> 會回到小島地圖，閃爍的看板就是下一站。</div>`,{wide:true});
 
@@ -798,6 +843,25 @@ S(1,'安全轉移位 · 關鍵口令','頭超過腳尖，個案才能幫你出�
   </div>
  </div>`,{wide:true});
 
+S(1,'安全轉移位 · 協助版技巧','雙腰帶轉移位：手不用彎腰去抓褲頭',`
+ <div class="row f1">
+  <div class="col" style="flex:0 0 860px">${VID('jDkzzJeJ-Qc','belt','好神帶｜幫幫移位系列（JUST4U 強生醫療儀器）')}</div>
+  <div class="col f1">
+   <div class="tile f1"><span class="k">依賴型 · HOW</span><h3>怎麼做</h3><ul class="dots"><li>兩條帶子繞過個案骨盆下方</li><li>照顧者抓帶子，不用彎腰抓褲頭</li><li>照顧者身體往後坐，個案就被帶起來</li><li>一樣要卡膝、頭過腳尖</li></ul></div>
+   <a class="qrc" href="https://www.youtube.com/watch?v=jDkzzJeJ-Qc" target="_blank" rel="noopener">${qrImg('https://www.youtube.com/watch?v=jDkzzJeJ-Qc',4)}<span><h3>掃描看影片</h3><p>手機掃 QR，或點這裡在 YouTube 開啟</p></span></a>
+  </div>
+ </div>`,{wide:true,init:initVid});
+
+S(1,'安全轉移位 · 協助版技巧','椅子轉位法：像扛砂包一樣，坐著帶過去',`
+ <div class="row f1">
+  <div class="col" style="flex:0 0 860px">${VID('lTtDY2vXpC4','chair','日本長期照護 轉移位（國興衛視《老師沒教的事》）')}</div>
+  <div class="col f1">
+   <div class="tile f1"><span class="k">依賴型 · HOW</span><h3>怎麼做</h3><ul class="dots"><li>照顧者坐在椅子上做，腰不用彎</li><li>個案上身趴在照顧者大腿與肩上，像扛一包砂包</li><li>頭往下，屁股自然離開座面</li><li>用照顧者身體的轉動帶過去，再慢慢坐回</li></ul></div>
+   <a class="qrc" href="https://www.youtube.com/watch?v=lTtDY2vXpC4" target="_blank" rel="noopener">${qrImg('https://www.youtube.com/watch?v=lTtDY2vXpC4',4)}<span><h3>掃描看影片</h3><p>手機掃 QR，或點這裡在 YouTube 開啟</p></span></a>
+  </div>
+ </div>
+ <div class="src">畫面：國興衛視《老師沒教的事：長期照護方法大公開》。</div>`,{wide:true,init:initVid});
+
 S(1,'安全轉移位 · 失智照顧特別提醒','失智者的移位，和一般個案不一樣',`
  <div class="grid g3">
   <div class="tile"><h3>不預告就動手 ＝ 觸發抗拒</h3><p>在失智者的感受裡，那是一個陌生人突然抓住他。抗拒是正常反應，不是不配合。</p></div>
@@ -828,6 +892,7 @@ QZ(1,'安全轉移位 · 闖關測驗','安全轉移位 闖關測驗',[
  {q:'復能轉移位的原則是？',o:['全部幫他做比較快','做得到的不幫，做不到的才補','讓他自己做，你不用管','只給口令不給保護'],a:1,e:'只補他差的那一點，而且補的越來越少。'},
  {q:'協助坐到站時，最關鍵的口令是？',o:['「用力站起來」','「抓緊我的脖子」','「鼻子超過腳尖」','「慢慢來不要急」'],a:2,e:'頭過腳尖，重心才會到腳上，屁股才離得開椅面。'},
  {q:'省力移位五原則中，最省力也最常被跳過的是？',o:['靠近','蹲不彎','借力不用力','說在前'],a:3,e:'先說、數 1、2、3，讓他一起出力，你就少扛一半。'},
+ {q:'照顧者坐在椅子上，讓個案上身趴在自己大腿與肩上，像扛砂包一樣帶過去，這是哪一種技巧？',o:['依賴轉位（整個抱起來）','椅子轉位法','站立軸心轉位','滑板轉位'],a:1,e:'椅子轉位法：照顧者坐著做，腰不用彎，用身體轉動帶個案過去。'},
  {q:'長輩在輪椅上往下滑，正確的復位方式是？',o:['從腋下往上提','抓交叉的前臂，先前傾再往後帶','拉他的褲頭往後','叫家屬來抱'],a:1,e:'從腋下提會傷肩。一直滑，就回頭檢查座深、座墊、腳踏板。'}]);
 
 /* ---- 2 風險與權益 ---- */
@@ -1668,6 +1733,31 @@ let W3=null;
  requestAnimationFrame(frame);
  W3={toStation,resize,setDrive,enterNear,toMap,rig,want,camera};
 })();
+
+/* ============ print mode (?print): handout without quizzes, 2 slides per A4 page ============ */
+if(/[?&]print/.test(location.search)){(function(){
+ document.body.classList.add('print');document.body.classList.remove('mob');layout=function(){};
+ const skip=s=>s.cover||s.quiz||s.pre||s.chk||['開場 · 今天怎麼上','開場 · 暖身','結語 · 學習護照'].includes(s.tag);
+ const keep=SL.filter(s=>!skip(s));
+ keep.forEach(s=>{if(s.init&&!s.done){s.done=true;try{s.init(s.el);}catch(e){}}});
+ /* questions that stay (scenarios, wrist escape): show the answer and the reason */
+ document.querySelectorAll('.gq').forEach(g=>{g.classList.add('done');g.querySelectorAll('.opts button').forEach(b=>{if(b.dataset.v===g.dataset.a)b.classList.add('right');});});
+ document.querySelectorAll('.tomap').forEach(b=>b.remove());
+ const root=document.createElement('div');root.id='printroot';
+ const url=PAGES_URL;
+ root.innerHTML=`<section class="ppage pcover"><div class="pc-in">
+  <div class="pc-kick">失智症照顧服務訓練課程 · 3 小時 · 講義</div>
+  <h1>職業安全與衛生</h1><h2>照顧服務人員的自我保護與勞動權益</h2>
+  <div class="pc-qr"><div class="pc-big">${qrImg(url,9)}<b>掃描在網頁上看互動簡報</b><span>${url.replace('https://','')}</span><small>網頁版有先猜猜看、闖關測驗、影片，手機也能看</small></div></div>
+  <div class="pc-row"><div class="pc-who"><b>鍾孟修 職能治療師</b><br>愛迪樂居家職能治療所 所長<br>適用對象：照顧服務員、居家服務員、機構照顧人員</div><div class="pc-fb">${qrImg(FB_URL,4)}<span>追蹤粉絲專頁<br><small>鍾孟修Matt-職能治療師</small></span></div></div>
+  <ol class="pc-toc">${CH.slice(1,5).map((c,i)=>`<li style="--cc:${c.c}"><b>${i+1}</b>${c.n}</li>`).join('')}</ol>
+ </div></section>`;
+ for(let i=0;i<keep.length;i+=2){const pg=document.createElement('section');pg.className='ppage';
+  keep.slice(i,i+2).forEach(s=>{const n=SL.indexOf(s)+1;const w=document.createElement('div');w.className='pslot';s.el.classList.add('on');w.appendChild(s.el);const f=document.createElement('div');f.className='pnum';f.textContent='安心小島 職業安全與衛生 · 第 '+n+' 頁';w.appendChild(f);pg.appendChild(w);});
+  root.appendChild(pg);}
+ document.body.appendChild(root);
+ window.PRINT_READY=true;
+})();}
 
 /* start */
 const h=(location.hash.match(/^#s(\d+)$/)||[])[1];
