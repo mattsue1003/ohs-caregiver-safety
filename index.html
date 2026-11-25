@@ -565,6 +565,12 @@ ol.seq li::before{position:absolute;left:14px;top:50%;transform:translateY(-50%)
 body.mob .vbox{aspect-ratio:16/9;flex:none}
 .bars .barrow{grid-template-columns:minmax(150px,max-content) 1fr 90px}
 .grid{grid-auto-rows:minmax(0,1fr)}
+.mcard .mf .mq{border:0;background:var(--cc);color:#fff;border-radius:999px;padding:3px 12px;font-family:var(--fh);font-size:15px}
+.mcard[data-ch="2"] .mf .mq{color:var(--ink)}
+.mcard .mb button{font-size:15.5px;padding:4px 10px}
+
+.fitting .gq .why,.fitting .fq .why{display:block!important}
+.qrgrid.tools3{grid-template-columns:repeat(3,1fr)}
 
 /* ---- print mode (?print): A4 landscape, one 16:9 slide per page, ink-saving black on white ---- */
 @page{size:A4 landscape;margin:0}
@@ -750,8 +756,8 @@ S(0,'開場 · 暖身','過去一年，你身上發生過哪幾件事？',`
 
 /* ---- 1 安全轉移位 ---- */
 QZ(1,'安全轉移位 · 先猜猜看','進站前，先猜三題',[
- {q:'照顧者腰痛，最常見的原因是哪一個？',o:['椎間盤突出','脊椎側彎','肌肉拉傷','骨刺'],a:2,e:'肌肉拉傷，約占七成。好消息是：肌肉拉傷最能靠方法預防。'},
- {q:'坐著和站著，哪一個姿勢腰椎壓力比較大？',o:['站著','坐著','一樣大'],a:1,e:'坐著比站著大。等一下會看到「彎腰＋負重」的壓力有多驚人。'},
+ {q:'照顧者腰痛，最常見的原因是哪一個？',o:['椎間盤突出','脊椎側彎','肌肉拉傷','骨刺'],a:2,e:'肌肉拉傷，約占七成。好消息是：肌肉拉傷最能靠方法預防。',s:'Deyo RA, Weinstein JN. Low back pain. N Engl J Med 2001;344(5):363–70'},
+ {q:'坐著和站著，哪一個姿勢腰椎壓力比較大？',o:['站著','坐著','一樣大'],a:1,e:'坐著比站著大。等一下會看到「彎腰＋負重」的壓力有多驚人。',s:'Nachemson AL. Spine 1976;1(1):59–71'},
  {q:'下面四種轉位方式，哪一個「不是」零抬舉？',o:['個案自己轉位','站立／蹲姿軸心轉位','滑板轉位','把人整個抱起來的依賴轉位'],a:3,e:'依賴轉位把人整個抱起來。前三種都是讓個案出力，或用水平移動。'}],{pre:true});
 
 S(1,'安全轉移位 · 為什麼先學','照顧工作最常受傷的，是自己的腰和肩',`
@@ -773,10 +779,19 @@ S(1,'安全轉移位 · 腰椎壓力','坐著彎腰搬東西，腰的負擔是�
   </div>
   <div class="col" style="flex:0 0 470px">
    <div class="tile solid f1" style="justify-content:center"><h3>轉移位，剛好就是「彎腰＋負重」</h3><p>所以這一站所有技巧都在做同一件事：<b>不要彎著腰出力</b>。</p></div>
-   <div class="tile f1"><h3>腰痛了會自己好嗎？</h3><p>大多會慢慢好轉。但腳麻無力變明顯、大小便控制出問題、半夜痛醒、跌倒後才痛，或超過四個月沒好，就要就醫。</p></div>
+   <div class="tile f1"><h3>腰痛了會自己好嗎？</h3><p>多數急性腰痛在 6 週內明顯好轉。但有些警訊不能等，下一頁告訴你。</p></div>
   </div>
  </div>
- <div class="src">數據：Nachemson 腰椎間盤內壓研究（站立＝100 的相對值）。</div>`,{wide:true});
+ <div class="src">資料來源：Nachemson AL. The lumbar spine: an orthopaedic challenge. Spine 1976;1(1):59–71（腰椎間盤內壓，站立＝100 的相對值）。</div>`,{wide:true});
+
+S(1,'安全轉移位 · 腰痛就醫','腰痛會自己好嗎？什麼時候不能等',`
+ <div class="grid g3">
+  <div class="tile"><span class="k">MOST GET BETTER</span><h3>多數會好轉</h3><p>急性腰痛大多在<b>前 6 週</b>明顯改善，之後進步變慢；一年後仍有部分人留有輕微疼痛。</p><p>居家處理幾週沒有改善、影響工作或生活，就該看醫師。</p></div>
+  <div class="tile solid"><span class="k">GO NOW</span><h3>立刻就醫（急診）</h3><ul class="dots"><li>兩腳麻、刺痛或無力</li><li>會陰、肛門周圍感覺變差</li><li>解不出尿，或大小便失禁</li><li>車禍、跌倒等嚴重外傷後才痛</li></ul></div>
+  <div class="tile"><span class="k">SEE A DOCTOR SOON</span><h3>盡快看醫師</h3><ul class="dots"><li>發燒、發冷、全身不舒服</li><li>體重莫名下降</li><li>休息也不會減輕，或晚上更痛</li><li>突然劇痛，或越來越嚴重</li></ul></div>
+ </div>
+ <div class="note">跟工作有關的腰痛：掛<b>職業醫學科</b>、拿職業傷病門診單、留下紀錄（第 4 站會教）。</div>
+ <div class="src">資料來源：Costa LCM, et al. The prognosis of acute and persistent low-back pain: a meta-analysis. CMAJ 2012;184(11):E613–24；英國 NHS〈Back pain〉就醫指引（2026 更新）；NICE NG59 Low back pain and sciatica in over 16s。</div>`,{wide:true});
 
 S(1,'安全轉移位 · 人因性','你的腰，正在替誰扛？',`
  <div class="grid g2">
@@ -787,10 +802,22 @@ S(1,'安全轉移位 · 人因性','你的腰，正在替誰扛？',`
 
 S(1,'安全轉移位 · 核心觀念','零抬舉：抱不動的時候，不要硬抱',`
  <div class="grid g2">
-  <div class="tile"><span class="k">NO-LIFT</span><h3>零抬舉 No-Lift Policy</h3><p>一套符合人體工學的安全照護觀念，目的是避免職業傷害。照顧者受傷的三個原因：</p><p>${['人力難求','欠缺教育訓練','輔具不足'].map(x=>`<span class="pill">${x}</span>`).join('')}</p><p>美國 NIOSH 建議：徒手協助移位時，照顧者承擔的重量以 <b>16 公斤</b>為上限，超過就該用輔具或兩人。</p></div>
+  <div class="tile"><span class="k">NO-LIFT</span><h3>零抬舉 No-Lift Policy</h3><p>一套符合人體工學的安全照護觀念，目的是避免職業傷害。照顧者受傷的三個原因：</p><p>${['人力難求','欠缺教育訓練','輔具不足'].map(x=>`<span class="pill">${x}</span>`).join('')}</p><p>NIOSH 研究員 Waters 推算：個案能配合時，每位照顧者徒手承擔約 <b>16 公斤（35 磅）</b>以內；超過就用輔具。怎麼判斷，看下一頁。</p></div>
   <div class="tile"><span class="k">HORIZONTAL</span><h3>水平取代垂直</h3><ul class="dots"><li>把人「抬起來」是垂直，最傷腰</li><li>讓屁股「平移過去」是水平，省力很多</li><li>扶手、腳靠能掀開，輪椅才能貼近床</li><li>床面和輪椅座面一樣高，或出發的那邊略高</li></ul><p>選輪椅先看：<b>扶手能不能掀、腳靠能不能掀</b>。</p></div>
  </div>
- <div class="src">Waters TR. When is it safe to manually lift a patient? Am J Nurs 2007（NIOSH 修訂提舉公式應用於病人搬運，建議上限 35 磅）。</div>`,{wide:true});
+ <div class="src">資料來源：Waters TR. When is it safe to manually lift a patient? Am J Nurs 2007;107(8):53–59（以 NIOSH 修訂提舉公式推算，約 35 磅）。</div>`,{wide:true});
+
+S(1,'安全轉移位 · 16 公斤怎麼判斷','16 公斤怎麼判斷？算「你要扛的那一份」',`
+ <div class="row f1">
+  <div class="col f1">
+   <div class="tile f1"><span class="k">STEP 1</span><h3>先估你要承擔多少</h3><p>個案自己撐得住的部分不算，算的是<b>落在你手上的重量</b>。</p><ul class="dots"><li><b>一條腿 ≈ 體重 16%</b>：60 公斤長輩一條腿約 10 公斤；超過 100 公斤，一條腿就超過 16 公斤</li><li><b>坐到站</b>：82 公斤、只能自己撐一半，兩人分剩下的 41 公斤，每人約 20 公斤，已超過</li><li><b>完全依賴</b>：90 公斤四個人抬，每人約 23 公斤，仍超過</li></ul></div>
+  </div>
+  <div class="col f1">
+   <div class="tile f1"><span class="k">STEP 2</span><h3>用「腳能撐住嗎」快速分</h3><ul class="dots"><li><b>腳全撐、聽得懂口令</b>：你只扶持保護，可徒手（復能版）</li><li><b>腳只撐一部分</b>：移位腰帶、轉盤、站立輔具，或兩人</li><li><b>腳撐不住、無法配合</b>：成人都遠超過 16 公斤，用移位板、滑布、移位機</li></ul></div>
+   <div class="tile solid" style="flex:0 0 auto"><h3>前提：個案能配合、動作平穩</h3><p>躁動、抗拒、可能突然動的個案，這個算法不適用，不要徒手。16 公斤是研究推算，不是法定標準。</p></div>
+  </div>
+ </div>
+ <div class="src">資料來源：Waters TR. Am J Nurs 2007;107(8):53–59（三個例子依原文 180 磅、200 磅、腿重約體重 16% 換算）；Lu ML. Revisiting the limits of the 35 pound limit（PMC8985990）。</div>`,{wide:true});
 
 S(1,'安全轉移位 · 兩種轉移位','復能轉移位 vs 協助轉移位',`
  <div class="grid g2">
@@ -816,7 +843,7 @@ S(1,'安全轉移位 · 動手之前','先問四個問題，記住三個不要',
 
 CHK(1,'核心觀念，聽懂了嗎？',[
  ['同一位長輩早上精神好、晚上很累，轉移位方式要怎麼選？',['一律用協助版比較安全','早上用復能版、晚上用協助版','一律讓他自己來'],1,'不是二選一。看當下能力選方法，都對。'],
- ['徒手協助移位，照顧者承擔的重量建議上限大約是？',['16 公斤','40 公斤','只要抱得動就好'],0,'NIOSH 建議約 16 公斤（35 磅），超過就用輔具或兩人。'],
+ ['徒手協助移位，照顧者承擔的重量建議上限大約是？',['16 公斤','40 公斤','只要抱得動就好'],0,'約 16 公斤（35 磅），算的是落在你手上的重量；超過就用輔具或兩人。（Waters, Am J Nurs 2007）'],
  ['個案坐不穩要往後挪，下面哪個做法最不建議？',['請他先往前傾','從腋下把他往上提','抓交叉的前臂往後帶'],1,'從腋下提會壓迫腋下、傷他的肩，也傷你的腰。']]);
 
 S(1,'安全轉移位 · 保護自己','彎髖不彎腰：三個保護腰的姿勢',`
@@ -901,8 +928,8 @@ S(1,'安全轉移位 · 常見狀況','長輩在輪椅上往下滑，怎麼辦�
  </div>`,{wide:true});
 
 S(1,'安全轉移位 · 回去還可以查','轉移位資源：掃了就帶走',`
- <div class="qrgrid">
-  ${[['https://mattsue1003.github.io/safe-transfer-deck/','安全移轉位完整簡報','85 頁：床上移動、翻身坐起、特殊轉移位、上下車'],['https://mattsue1003.github.io/transfer-video-library/','轉移位影片資料庫','145 支影片，用四個問題找到適合的技巧'],['https://anxin-transfer-guide.pages.dev/','日本轉移位學習','照顧型轉位技巧整理'],['https://mattsue1003.github.io/long-term-care-assistive-devices-database/','輔具資料庫','移位腰帶、滑布、轉盤、移位機怎麼選']].map(a=>`<a class="qrc tool" href="${a[0]}" target="_blank" rel="noopener">${qrImg(a[0],5)}<h3>${a[1]}</h3><p>${a[2]}</p><em>點我開啟 ↗</em></a>`).join('')}
+ <div class="qrgrid tools3">
+  ${[['https://mattsue1003.github.io/transfer-video-library/','轉移位影片資料庫','145 支影片，用四個問題找到適合的技巧'],['https://anxin-transfer-guide.pages.dev/','日本轉移位學習','照顧型轉位技巧整理'],['https://mattsue1003.github.io/long-term-care-assistive-devices-database/','輔具資料庫','移位腰帶、滑布、轉盤、移位機怎麼選']].map(a=>`<a class="qrc tool" href="${a[0]}" target="_blank" rel="noopener">${qrImg(a[0],5)}<h3>${a[1]}</h3><p>${a[2]}</p><em>點我開啟 ↗</em></a>`).join('')}
  </div>
  <div class="note">移位輔具（移位腰帶、移位板、移位滑墊、移位機）有長照輔具補助，回報督導或個管員申請評估。</div>`,{wide:true});
 
@@ -913,7 +940,7 @@ QZ(1,'安全轉移位 · 闖關測驗','安全轉移位 闖關測驗',[
  {q:'復能轉移位的原則是？',o:['全部幫他做比較快','做得到的不幫，做不到的才補','讓他自己做，你不用管','只給口令不給保護'],a:1,e:'只補他差的那一點，而且補的越來越少。'},
  {q:'協助坐到站時，最關鍵的口令是？',o:['「用力站起來」','「抓緊我的脖子」','「鼻子超過腳尖」','「慢慢來不要急」'],a:2,e:'頭過腳尖，重心才會到腳上，屁股才離得開椅面。'},
  {q:'省力移位五原則中，最省力也最常被跳過的是？',o:['靠近','蹲不彎','借力不用力','說在前'],a:3,e:'先說、數 1、2、3，讓他一起出力，你就少扛一半。'},
- {q:'照顧者坐在椅子上，讓個案上身趴在自己大腿與肩上，像扛砂包一樣帶過去，這是哪一種技巧？',o:['依賴轉位（整個抱起來）','椅子轉位法','站立軸心轉位','滑板轉位'],a:1,e:'椅子轉位法：照顧者坐著做，腰不用彎，用身體轉動帶個案過去。'},
+ {q:'照顧者坐在椅子上，讓個案上身趴在自己大腿與肩上，像扛砂包一樣帶過去，這個技巧叫什麼？',o:['從腋下抱起來','椅子轉位法','站立軸心轉位','滑板轉位'],a:1,e:'椅子轉位法。它屬於依賴型轉位，照顧者出力多；但照顧者坐著做、腰不用彎，用身體轉動把人帶過去，不是把人抱起來。'},
  {q:'長輩在輪椅上往下滑，正確的復位方式是？',o:['從腋下往上提','抓交叉的前臂，先前傾再往後帶','拉他的褲頭往後','叫家屬來抱'],a:1,e:'從腋下提會傷肩。一直滑，就回頭檢查座深、座墊、腳踏板。'}]);
 
 /* ---- 2 風險與權益 ---- */
@@ -991,12 +1018,12 @@ S(2,'風險與權益 · 實務現場','長照與居家服務最常見的六個�
  <div class="grid g3">
   ${[['工時怎麼算','待命、機構要求提早到場、機構召集的會議與訓練，原則上都是工作時間'],
      ['時薪制的陷阱','時薪制一樣有特休、國定假日工資與加班費，實務上最常被漏掉'],
-     ['變形工時','四週變形工時是為全時勞工設計的；多數居服員屬部分工時，原則上不適用'],
+     ['變形工時','全時：依法定正常工時上班（每日 8、每週 40 小時）。部分工時：工時比同單位全時同事明顯短，例如時薪制、排班少。變形工時原則上只適用全時勞工'],
      ['特別休假','部分工時勞工也有特別休假，依工作時間比例計給，不是「兼職就沒有」'],
      ['案家之間的移動','是否計入工時、有無交通補助，各機構做法不一，務必在契約中確認並留紀錄'],
      ['有薪假被扣全勤','公傷病假、生理假、家庭照顧假、婚假、產假各有規定，不能一律當事假處理']].map((a,i)=>`<div class="tile"><span class="k">0${i+1}</span><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join('')}
  </div>
- <div class="src">以上為一般原則，個案認定仍以勞動契約、機構規定與主管機關解釋為準；有疑義可撥 1955 諮詢。</div>`,{wide:true});
+ <div class="src">以上為一般原則，個案認定仍以勞動契約、機構規定與主管機關解釋為準；有疑義可撥 1955 諮詢。資料來源：勞動基準法 §30、§30-1、§38、§39；勞動部《僱用部分時間工作勞工應行注意事項》第 3 點（部分工時定義、變形工時原則不適用）。</div>`,{wide:true});
 
 S(2,'風險與權益 · 最容易吃虧的一題','「工作時間」到底怎麼認定？',`
  <div class="grid g2">
@@ -1016,6 +1043,15 @@ S(2,'風險與權益 · 性別平等工作法','職場性騷擾：三種型態�
   <div class="tile"><span class="k">EMPLOYER</span><h3>雇主的義務</h3><ul class="dots"><li>僱 10 人以上未達 30 人：訂定申訴管道並公開揭示</li><li>僱 30 人以上：訂定防治措施、申訴及懲戒辦法並公開揭示</li><li>定期辦理防治性騷擾的教育訓練</li><li>受理申訴後應調查、懲處，並提供必要協助</li></ul></div>
  </div>`,{wide:true});
 
+S(2,'風險與權益 · 性騷擾舉證','性騷擾怎麼舉證？在案家、對主管、事後才說都可以',`
+ <div class="grid g3">
+  <div class="tile"><span class="k">當天</span><h3>當下或當天就留</h3><ul class="dots"><li>寫下時間、地點、對方原話和動作、在場的人</li><li>LINE、簡訊、通話紀錄截圖，不要刪</li><li>傳訊息給信任的人或督導說經過，訊息時間就是證據</li><li>你是對話的一方，為保護自己錄音不違法</li></ul></div>
+  <div class="tile"><span class="k">事後</span><h3>事後才說，也有用</h3><ul class="dots"><li>把回憶寫下來，註明寫的日期</li><li>找當時聽你說過的同事、家人作證</li><li>就醫、諮商紀錄</li><li>排班表、服務紀錄，證明你當時在那裡</li></ul></div>
+  <div class="tile solid"><span class="k">向誰說</span><h3>對象不同，管道不同</h3><ul class="dots"><li><b>個案或家屬</b>：向機構申訴，機構要換人、雙人服務或停止服務；也可依性騷擾防治法向地方政府申訴</li><li><b>主管</b>：向機構申訴；是最高負責人就直接找地方勞工局</li><li>有強制碰觸，可以報警</li></ul></div>
+ </div>
+ <div class="note">不用等證據完美才申訴，你的陳述本身就是證據。期限：知道起 2 年內、行為結束起最長 5 年（主管等權勢性騷擾為 3 年、7 年）。諮詢：113、1955。</div>
+ <div class="src">資料來源：性別平等工作法 §13、§32-1、§32-2；性騷擾防治法 §14；通訊保障及監察法 §29（對話一方錄音）。</div>`,{wide:true});
+
 S(2,'風險與權益 · 自我保護','手上要留著的八份東西',`
  <div class="eight">
   ${['勞動契約書<small>服務項目與工作地點寫在哪</small>','出勤紀錄<small>打卡截圖、簽到表照片</small>','薪資明細<small>與工資清冊</small>','服務紀錄表<small>與工作日誌</small>','排班表<small>臨時異動的通知訊息</small>','事件當下<small>照片、錄音、對話截圖</small>','就醫證明<small>診斷書、醫療費用收據</small>','通報紀錄<small>與督導的回覆</small>'].map((t,i)=>`<div class="tile"><span class="big" style="font-size:52px">${i+1}</span><h3>${t}</h3></div>`).join('')}
@@ -1024,10 +1060,10 @@ S(2,'風險與權益 · 自我保護','手上要留著的八份東西',`
 
 S(2,'風險與權益 · 容易搞混','健康檢查有三套規定，不要混在一起',`
  <table class="tbl">
-  <tr><th></th><th>成人預防保健</th><th>職安法一般健檢</th><th>長照感控胸部 X 光</th></tr>
+  <tr><th></th><th>成人預防保健</th><th>職安法一般健檢</th><th>長照機構胸部 X 光</th></tr>
   <tr><td>誰付錢</td><td>健保／國健署</td><td><b>雇主負擔</b></td><td>依機構規定</td></tr>
   <tr><td>頻率</td><td>30–39 每 5 年<br>40–64 每 3 年<br>65 以上每年</td><td>未滿 40 每 5 年<br>40–65 每 3 年<br>65 以上每年</td><td>在職人員每年 1 次<br>新進人員到職前 3 個月內</td></tr>
-  <tr><td>目的</td><td>三高慢性病早期發現</td><td>職業病預防、選工配工</td><td>防止結核病在機構內傳播</td></tr>
+  <tr><td>目的</td><td>三高慢性病早期發現</td><td>職業病預防、選工配工</td><td>篩檢肺結核：長輩抵抗力弱又住在一起，一人帶菌就可能傳給一整區</td></tr>
  </table>
  <div class="note">前兩套年齡級距幾乎一樣，實務上常合併安排；但雇主<b>不能</b>用「你去做成人預防保健就好」來規避責任：職安法的健檢費用是雇主義務，項目不足要補，紀錄由雇主保存。</div>`,{wide:true});
 
@@ -1341,6 +1377,10 @@ S(5,'終點','謝謝大家，把自己完整地帶回家',`
    <ul class="roles">${ROLES}</ul>
   </div>
  </div>`,{wide:true});
+
+/* sources: one line on every content slide */
+const SRC={"你的腰，正在替誰扛？": "勞動部職業安全衛生署《人因性危害預防計畫指引》；職業安全衛生設施規則 §324-1", "復能轉移位 vs 協助轉移位": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）；衛生福利部長照 2.0 專業服務（居家復能）", "做得到的不幫，做不到的才補": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）；協助五級為本課程整理", "省力搬運與移位　五原則": "勞動部職業安全衛生署《人因性危害預防計畫指引》；Waters TR. Am J Nurs 2007", "先把環境準備好": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）；圖：鍾孟修〈轉移位技巧〉動畫", "輪椅跟床：30–45 度，還是貼著？": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）", "床到輪椅的省力移位：六個步驟": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）；勞動部職業安全衛生署《人因性危害預防計畫指引》", "頭超過腳尖，個案才能幫你出力": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）；圖：鍾孟修〈轉移位技巧〉動畫", "雙腰帶轉移位：手不用彎腰去抓褲頭": "影片：JUST4U 強生醫療儀器〈好神帶｜幫幫移位系列〉；鍾孟修《安全移轉位技巧與實務演練》講義（2026）", "失智者的移位，和一般個案不一樣": "Kales HC, Gitlin LN, Lyketsos CG. Assessment and management of behavioral and psychological symptoms of dementia. BMJ 2015;350:h369；鍾孟修《安全移轉位技巧與實務演練》講義（2026）", "長輩在輪椅上往下滑，怎麼辦？": "鍾孟修《安全移轉位技巧與實務演練》講義（2026）；圖：鍾孟修〈轉移位技巧〉動畫", "轉移位資源：掃了就帶走": "衛生福利部長照 2.0 輔具服務及居家無障礙環境改善服務給付；各網站為講師整理之資料庫", "為什麼照顧工作特別容易受傷？": "勞動部職業安全衛生署《人因性危害預防計畫指引》、《執行職務遭受不法侵害預防指引》（獨自作業風險）", "保護你的五部法律": "全國法規資料庫：勞動基準法、職業安全衛生法、勞工職業災害保險及保護法、性別平等工作法、長期照顧服務法", "職業安全衛生法在保護誰？": "職業安全衛生法 §5、§6、§20、§32、§34（全國法規資料庫）", "遇到立即危險，你可以停下來走開": "職業安全衛生法 §18", "職安法要求雇主辦理的四大預防計畫": "職業安全衛生法 §6 第 2 項；職業安全衛生設施規則 §324-1～§324-3；女性勞工母性健康保護實施辦法", "勞工職業災害保險及保護法": "勞工職業災害保險及保護法（111 年 5 月 1 日施行）；勞工職業災害保險職業傷病審查準則（上下班途中）；勞動部勞工保險局", "職業災害分兩種：保障一樣，舉證不一樣": "勞工職業災害保險職業傷病審查準則；勞工職業災害保險職業病種類表；勞動部《職業病認定參考指引》", "「工作時間」到底怎麼認定？": "勞動基準法 §30（出勤紀錄保存五年、勞工可申請副本）；勞動部〈勞工在事業場所外工作時間指導原則〉", "職場性騷擾：三種型態與申訴管道": "性別平等工作法 §12、§13、§32-1（113 年 3 月 8 日修正施行）", "手上要留著的八份東西": "勞動基準法 §23（工資清冊）、§30（出勤紀錄）；本課程整理", "健康檢查有三套規定，不要混在一起": "勞工健康保護規則（一般健康檢查頻率）；國民健康署成人預防保健服務；衛生福利部疾病管制署《人口密集機構感染管制措施指引》（工作人員任用前及每年胸部 X 光）", "健檢與訓練，誰出錢？": "職業安全衛生法 §20、§32、§45、§46；勞動基準法 §15-1（最低服務年限）", "照顧現場的四大危害": "勞動部職業安全衛生署人因性、不法侵害、異常工作負荷預防指引；本課程整理", "長照現場最常遇到的傳染風險": "衛生福利部疾病管制署：疥瘡、諾羅病毒感染、流感、結核病衛教資料；長期照護機構感染管制相關指引", "洗手五時機": "WHO Guidelines on Hand Hygiene in Health Care (2009)；衛生福利部疾病管制署手部衛生資料", "個人防護具　穿脫順序": "U.S. CDC. Sequence for Putting On and Removing Personal Protective Equipment (PPE)；衛生福利部疾病管制署", "手套與隔離衣的脫除": "U.S. CDC. Sequence for Putting On and Removing PPE（手套脫除方式）", "針扎與體液暴觸：黃金五步驟": "衛生福利部疾病管制署：醫療照護人員扎傷與血液體液暴觸處理、HIV 暴露後預防性投藥（PEP）建議", "職場不法侵害的四種樣子": "勞動部職業安全衛生署《執行職務遭受不法侵害預防指引》；職業安全衛生設施規則 §324-3", "他打你，多半不是針對你": "Kales HC, Gitlin LN, Lyketsos CG. BMJ 2015;350:h369（DICE 法：先找行為的原因）", "攻擊發生的當下：S.T.O.P. 四步驟": "本課程整理；參考勞動部職業安全衛生署《執行職務遭受不法侵害預防指引》", "被抓住手腕時的脫身": "本課程整理；參考勞動部職業安全衛生署《執行職務遭受不法侵害預防指引》", "家屬的不合理要求，也是職業危害": "職業安全衛生設施規則 §324-3；勞動部職業安全衛生署《執行職務遭受不法侵害預防指引》", "累到不想說話，也是一種職業危害": "職業安全衛生設施規則 §324-2；勞動部職業安全衛生署《異常工作負荷促發疾病預防指引》", "三個需要留意的狀態": "Maslach C, Jackson SE. The measurement of experienced burnout. J Organ Behav 1981;2:99–113；Figley CR. Compassion Fatigue (1995)", "心理健康不能只靠個人硬撐": "勞動部職業安全衛生署《異常工作負荷促發疾病預防指引》；WHO Guidelines on mental health at work (2022)", "把這幾支電話存進手機": "衛生福利部（1925、113、1966）、勞動部（1955）、生命線協會（1995）、張老師基金會（1980）公告專線", "社區心理衛生中心可以提供什麼？": "精神衛生法（111 年修正）；衛生福利部〈青壯世代心理健康支持方案〉", "環境裡看不見的那些": "衛生福利部疾病管制署〈漂白水稀釋泡製方法〉；勞動部職業安全衛生署人因性與不法侵害預防指引；本課程整理", "居家服務的三個獨有風險": "勞動部職業安全衛生署《執行職務遭受不法侵害預防指引》（單獨作業）；本課程整理", "三個真實會遇到的難題：你會怎麼選？": "本課程整理；情境改寫自照顧服務員常見案例", "事故發生後的黃金五步驟": "勞工職業災害保險及保護法；勞動部勞工保險局職災給付申請說明", "職業傷病門診單怎麼拿？": "勞動部勞工保險局〈職業傷病門診單、住院申請書〉說明", "只是擦傷、沒住院，有什麼？": "勞工職業災害保險及保護法 §42（傷病給付）；勞動基準法 §59；勞工請假規則 §6", "職業災害　vs　普通傷病": "勞工職業災害保險及保護法；勞工保險條例（普通傷病給付）；勞動基準法 §13、§59；勞工請假規則 §4、§6", "各種假，誰給薪？": "勞工請假規則 §2～§7；性別平等工作法 §14、§20；勞動基準法 §38", "職業病要怎麼證明？": "勞動部《職業病認定參考指引》；勞工職業災害保險及保護法 §73（職業傷病診治專責醫院）", "北、中、南區職業安全衛生中心": "勞動部職業安全衛生署北、中、南區職業安全衛生中心官網（電話以官網為準）", "職災預防及重建中心　與　職業傷病診治網絡": "勞工職業災害保險及保護法 §70、§73；財團法人職業災害預防及重建中心官網", "北、中、南、東區勞工健康服務辦公室": "財團法人職業災害預防及重建中心 勞工健康服務辦公室官網（電話以官網為準）", "四個窗口，各管一件事": "勞動部勞工保險局、職業安全衛生署、職業災害預防及重建中心官網；本課程整理", "別讓身體撐到壞掉": "勞動部職業安全衛生署《異常工作負荷促發疾病預防指引》"};
+SL.forEach(x=>{const t=SRC[x.title];if(t&&!x.body.includes('class="src"'))x.body+=`<div class="src">資料來源：${t}</div>`;});
 
 /* ============ helpers for slide widgets ============ */
 function clockSVG(t){
@@ -1755,13 +1795,46 @@ let W3=null;
  W3={toStation,resize,setDrive,enterNear,toMap,rig,want,camera};
 })();
 
+/* ============ map: shorter cards, stacked by real height, scaled to fit each column ============ */
+const MAP_SKIP=['先猜猜看','小檢核','闖關測驗'];
+const mapName=s=>{if(s.cover)return '封面';const t=s.tag.includes('·')?s.tag.split('·')[1].trim():(s.tag.length<=10?s.tag:s.title);return t.length>10?t.slice(0,10)+'…':t;};
+renderMap=function(){mapCards.innerHTML=CH.map((c,ci)=>{const idx=SL.map((s,i)=>[s,i]).filter(a=>a[0].ch===ci);const qi=SL.findIndex(s=>s.quiz&&s.ch===ci);const r=PASS[ci];
+ const mins=['開場 10′','50′','40′','45′','35′','5′'][ci];
+ const seen=new Set();const chips=idx.filter(a=>{const n=mapName(a[0]);if(MAP_SKIP.includes(n)||seen.has(n))return false;seen.add(n);return true;});
+ return `<div class="mcard${ci===nextCh?' next':''}" data-ch="${ci}" style="--cc:${c.c};--tint:color-mix(in srgb,${c.c} 12%,#fff);--tint2:color-mix(in srgb,${c.c} 24%,#fff)"><button class="mh" data-go="${idx[0][1]}"><b>${ci?ci:'GO'}</b>${c.n}<small>${mins}</small></button>
+  <div class="mb">${chips.map(a=>`<button data-go="${a[1]}">${mapName(a[0])}</button>`).join('')}</div>
+  <div class="mf"><span>${idx.length} 頁</span>${qi>=0?`<button class="mq" data-go="${qi}">${r?`闖關 ${r.s}/${r.n}${passed(ci)?' ✓ 印章':''}`:'去闖關 →'}</button>`:''}</div></div>`;}).join('');
+ layoutMap();};
+const CARDPOS={};
+let MAPPTS=null;{const _ma=window.mapAssign;window.mapAssign=pts=>{MAPPTS=pts;_ma(pts);};}
+layoutMap=function(){const cards=[...mapCards.querySelectorAll('.mcard')];if(document.body.classList.contains('mob')){cards.forEach(m=>m.style.transform='none');return;}if(!slotOf||!MAPPTS)return;
+ const TOP=82,BOTTOM=900-118,GAP=14,W=340,AV=BOTTOM-TOP;
+ cards.forEach(m=>{m.style.transform='none';m.style.top='0px';});
+ const H={};cards.forEach(m=>H[m.dataset.ch]=m.offsetHeight);
+ const ch=cards.map(m=>+m.dataset.ch);const pref=c=>MAPPTS[c][0]<800?0:1;const flex=ch.filter(c=>Math.abs(MAPPTS[c][0]-800)<190);
+ /* try every left/right split of the middle stations; keep the one where the fuller column shrinks least */
+ let best=null,bs=-1;for(let mask=0;mask<(1<<flex.length);mask++){const side={};ch.forEach(c=>side[c]=pref(c));flex.forEach((c,k)=>side[c]=(mask>>k)&1);
+  const tot=[0,1].map(sd=>{const l=ch.filter(c=>side[c]===sd);return l.reduce((a,c)=>a+H[c],0)+GAP*Math.max(0,l.length-1);});
+  const sc=Math.min(1,AV/tot[0])+Math.min(1,AV/tot[1])-0.001*flex.filter(c=>side[c]!==pref(c)).length;const worst=Math.min(1,AV/Math.max(tot[0],tot[1]));
+  const score=worst*10+sc;if(score>bs){bs=score;best=side;}}
+ [0,1].forEach(sd=>{const col=ch.filter(c=>best[c]===sd).sort((a,b)=>MAPPTS[a][1]-MAPPTS[b][1]);if(!col.length)return;
+  const tot=col.reduce((a,c)=>a+H[c],0)+GAP*(col.length-1);const f=Math.min(1,AV/tot);let y=TOP+Math.max(0,(AV-tot*f)/2);
+  col.forEach(c=>{const m=cards.find(x=>+x.dataset.ch===c);const x=sd===0?36:1564-W*f;m.style.transformOrigin='0 0';m.style.transform=f<1?`scale(${f})`:'none';m.style.left=x+'px';m.style.top=y+'px';
+   CARDPOS[c]={x,y,w:W*f,h:H[c]*f};y+=(H[c]+GAP)*f;});});};
+window.onMapFrame=(pts,hub)=>{if(!slotOf)return;
+ const h=document.getElementById('mhub');h.style.left=hub[0]+'px';h.style.top=hub[1]+'px';
+ let svg='';pts.forEach((p,i)=>{const cp=CARDPOS[i];if(!cp)return;const ex=cp.x<800?cp.x+cp.w:cp.x,ey=cp.y+Math.min(60,cp.h/2);const col=['#f2558f','#3d6fe0','#e9a100','#ef5a5a','#0f9a9a','#7c4fe0'][i];
+  {const dx=p[0]-hub[0],dy=p[1]-hub[1],L=Math.hypot(dx,dy)||1,R=Math.min(150,L*.55);const sx=hub[0]+dx/L*R,sy=hub[1]+dy/L*R*.75;svg+=`<path d="M${sx} ${sy} Q${(sx+p[0])/2} ${(sy+p[1])/2-30} ${p[0]} ${p[1]}" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>`;}
+  svg+=`<path d="M${p[0]} ${p[1]} L${ex} ${ey}" fill="none" stroke="${col}" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><circle cx="${p[0]}" cy="${p[1]}" r="9" fill="${col}" stroke="#fff" stroke-width="4"/>`;});
+ document.getElementById('mapLines').innerHTML=svg;};
+
 /* ============ auto-fit: grow text in each box until the box (and the slide body) is filled ============ */
 const FIT_BOX='.tile,.law,.hstep,.flow .st,.gq,.qrc,.tbl,.roles,.agenda,.tally button,.fbcard';
 const FIT_TXT='h3,p,li,span,b,small,em,td,th,button,i,strong,a';
 function fitSlide(el){
  if(!el||el._fitted||el.querySelector('.qz')||el.classList.contains('cover'))return;
  const card=el.querySelector('.card'),bd=el.querySelector('.bd');if(!bd||!card.offsetHeight)return;
- el._fitted=true;
+ el._fitted=true;el.classList.add('fitting');
  const boxes=[...bd.querySelectorAll(FIT_BOX)].filter(b=>!b.parentElement.closest(FIT_BOX)&&!b.querySelector('.pic,.vbox'));
  /* group siblings so boxes in one row/grid share one size */
  const groups=new Map();boxes.forEach(b=>{const k=b.parentElement;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(b);});
@@ -1778,9 +1851,10 @@ function fitSlide(el){
  const setL=(ts,k)=>ts.forEach(t=>t.style.fontSize=(t.dataset.fs*k).toFixed(1)+'px');
  const search=(ts,lo,hi)=>{setL(ts,hi);if(ok())return hi;for(let n=0;n<7;n++){const m=(lo+hi)/2;setL(ts,m);if(ok())lo=m;else hi=m;}setL(ts,lo);return lo;};
  /* pass 1: one shared size for the whole slide; pass 2: each group takes what room is left */
- const k0=search(all,1,1.6);
+ setL(all,1);const k0=ok()?search(all,1,1.6):search(all,0.72,1);
  if(groups.size>1)groups.forEach(list=>{const ts=list.flatMap(txt);search(ts,k0,Math.min(1.6,k0*1.25));});
  if(window.FITDBG)FITDBG.push('k0='+k0.toFixed(3));
+ el.classList.remove('fitting');
 }
 {const _go=go;go=function(i){_go(i);const s=SL[cur];if(s&&!document.body.classList.contains('mob')){const el=s.el;(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>requestAnimationFrame(()=>fitSlide(el)));}};}
 
